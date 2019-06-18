@@ -1,4 +1,4 @@
-# backups-and-monitor-repo
+# backup-and-monitor
 This repository stores all of the scripts used to create the Task Scheduler backup &amp; monitoring systems for Chapel Hill Open Data
 
 <strong>task-scheduler-backup.ps1</strong>
