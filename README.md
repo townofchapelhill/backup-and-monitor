@@ -1,4 +1,7 @@
 # backup-and-monitor README
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5a7ea515a9014b9a9fd39c0492299661)](https://app.codacy.com/app/TownofChapelHill/backup-and-monitor?utm_source=github.com&utm_medium=referral&utm_content=townofchapelhill/backup-and-monitor&utm_campaign=Badge_Grade_Dashboard)
+
 This repository stores all of the scripts used to create the Task Scheduler backup &amp; monitoring systems for Chapel Hill Open Data
 
 <strong>task-scheduler-backup.ps1</strong>
