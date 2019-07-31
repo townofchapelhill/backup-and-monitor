@@ -8,6 +8,10 @@ This repository stores all of the scripts used to create the Task Scheduler back
 
 This is a Powershell script that serves 2 purposes.  The first is to retrieve the XML data for all Open Data tasks in the Task Scheduler on the server.  The second is to produce a CSV with the status of all tasks run from the task manager on this server.  The end product of both of these functions is deposited in the "Task Scheduler Backup" folder on the sharedrive.
 
+<strong>task-scheduler-status.ps1</strong>
+
+THis powershell script gathers the last run status of the scheduled tasks.
+
 <strong>parse-task-status.py & backup.py</strong>
 
 These two scripts are in Python 3 and exist to parse and aggregate the data we need to monitor the health of our task system.  
