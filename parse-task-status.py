@@ -19,6 +19,7 @@ def read_csv():
 				new_task = Task()
 				new_task.name = row[0]
 				new_task.lastResult = row[2]
+                                new_task.resultCode = row[2]
 				task_list.append(new_task.__dict__)
 
 	transform_and_write_result(task_list)
