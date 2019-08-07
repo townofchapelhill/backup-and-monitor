@@ -2,8 +2,10 @@ import csv
 import os
 import glob
 import re
+import pathlib
 from xml.dom import minidom
 from xml.dom.minidom import Document
+import filename_secrets
 
 # Object for storing data from XML file
 class Task(object):
@@ -17,7 +19,7 @@ class Task(object):
 # calls "parse_xml()" function for each file, deletes XML file when done
 def main_loop():
     obj_tasks = []
-    path = "//CHFS/Shared Documents/OpenData/Task Scheduler Backup/"
+    path = filename_secrets.taskBackup
     for infile in glob.glob(os.path.join(path, '*.xml') ):
         # initialize new object
         new_task = Task()
@@ -30,7 +32,7 @@ def main_loop():
         # when done parsing, append new_task as dict
         obj_tasks.append(new_task.__dict__)
         # delete XML
-        os.remove(infile)
+        # os.remove(infile)
     # calls format_data()
     format_data(obj_tasks)
 
@@ -68,7 +70,11 @@ def format_data(obj_tasks):
 
 # writes csv output to consolidate desired info
 def write_csv(obj_tasks):
-    with open("//CHFS/Shared Documents/OpenData/Task Scheduler Backup/task_scheduler_backup.csv", "w") as file:
+    # Create Path to backup directory
+    path =  pathlib.Path(filename_secrets.taskBackup)
+    # Open csv
+    outFile = path.joinpath("task_scheduler_backup.csv")
+    with open(outFile, "w") as file:
         fieldnames = obj_tasks[0].keys()
         csv_writer = csv.DictWriter(file, fieldnames=fieldnames, extrasaction='ignore', delimiter=',')
         csv_writer.writeheader()
