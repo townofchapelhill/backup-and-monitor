@@ -1,3 +1,11 @@
+
+<# 
+.SYNOPSIS
+  Dump the Task Scheduler Jobs, pulling last run status
+  Export the status data to a csv on the shared file systemm
+.EXAMPLE
+  task-scheduler-status
+#>
 # Run PowerShell with administrator permissions.
 If(!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) 
 { 
@@ -5,8 +13,11 @@ If(!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::
 }
 Else
 {
+    Import-Module C:\OpenData\PythonScripts\set-variables.psm1
+    Invoke-mapSecrets C:\OpenData\PythonScripts\filename_secrets.py
+
     $taskPath = "\OpenData\"
-    $outCsv = "//CHFS/Shared Documents/OpenData/Task Scheduler Backup/script_status.csv"
+    $outCsv = $taskBackup + "script_status.csv"
 
     Get-ScheduledTask |
         ForEach-Object { [pscustomobject]@{
