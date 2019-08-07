@@ -1,3 +1,4 @@
+
 <# 
 .SYNOPSIS
   Dump the Task Scheduler Jobs, pulling last run status
@@ -5,7 +6,6 @@
 .EXAMPLE
   task-scheduler-status
 #>
-
 # Run PowerShell with administrator permissions.
 If(!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) 
 { 
@@ -18,6 +18,7 @@ Else
 
     $taskPath = "\OpenData\"
     $outCsv = $taskBackup + "script_status.csv"
+
     Get-ScheduledTask |
         ForEach-Object { [pscustomobject]@{
             Name = $_.TaskName
