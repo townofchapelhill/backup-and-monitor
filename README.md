@@ -10,7 +10,7 @@ This is a Powershell script that serves 2 purposes.  The first is to retrieve th
 
 <strong>task-scheduler-status.ps1</strong>
 
-THis powershell script gathers the last run status of the scheduled tasks.
+This powershell script is an edited version of task-scheduler-backup.ps1 that produces a CSV with the status of all tasks run from the task manager on this server.
 
 <strong>parse-task-status.py & backup.py</strong>
 
@@ -19,5 +19,3 @@ These two scripts are in Python 3 and exist to parse and aggregate the data we n
 "backup.py" loops through the XML files output from the Powershell script and consolidates that info within a CSV that lives in the backup folder.  The purpose is to ensure we have a copy of all tasks, their descriptions, and their runtime intervals in the event of a server crash or etc.
 
 "parse-task-status.py" simply reads the CSV produced by the status monitoring function from the Powershell script and grabs the status for all the tasks under the "OpenData" directory.  The script also does some transformation of the contents in the "lastResult" column.  This transformation is designed to increase readability, but it is not 100% accurate.  It will catch and 0x1 and 0x103 (the most common), but it is not designed to catch any others.  Fine tuning may be needed in the future.
-
-[Task Scheduler Status Code reference](https://docs.microsoft.com/en-us/windows/win32/taskschd/task-scheduler-error-and-success-constants)
